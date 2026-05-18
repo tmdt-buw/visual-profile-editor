@@ -1,4 +1,4 @@
-# Construct-DCAT Profile Editor
+# Visual Profile Editor
 
 A visual semantic application profile editor for extending DCAT/DCAT-AP with construction-domain metadata constraints using LinkML, SHACL, JSON Schema, and RDF.
 
@@ -19,7 +19,7 @@ Typical use cases include:
 
 ## Repository Relationship
 
-`ConstructDCAT-with-LinkML` depends on `General-Ontology-Editor`. Construct-DCAT-specific templates, validation rules, examples, terminology, and export packaging live in this repository only.
+`Visual Profile Editor` depends on `General-Ontology-Editor`. Construct-DCAT-specific templates, validation rules, examples, terminology, and export packaging live in this repository only.
 
 For local development with both repositories side by side:
 
@@ -69,7 +69,7 @@ The legacy dataset onboarding demo routes remain available:
 ## Project Structure
 
 ```text
-construct-dcat-docker/
+visual-profile-editor/
   backend/      FastAPI app and Construct-DCAT profile routes
   frontend/     React + TypeScript profile editor UI
   profiles/     profile templates and example metadata

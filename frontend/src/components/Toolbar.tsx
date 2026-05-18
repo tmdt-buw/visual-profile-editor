@@ -29,7 +29,7 @@ export function Toolbar({ onExport, onImport, onSave, onShowTemplates, onToggleY
   return (
     <header className="toolbar">
       <div>
-        <h1>Construct-DCAT Profile Editor</h1>
+        <h1>Visual Profile Editor</h1>
         <p>Select a base profile, constrain DCAT terms, add semantic anchors, validate, and export profile artifacts.</p>
       </div>
       <div className="toolbar__actions">

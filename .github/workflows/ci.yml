@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          path: construct-dcat-docker
+          path: visual-profile-editor
       - uses: actions/checkout@v4
         with:
           repository: jundahuang9123/General-Ontology-Editor
@@ -18,9 +18,9 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -e ../General-Ontology-Editor -r backend/requirements.txt pytest
-        working-directory: construct-dcat-docker
+        working-directory: visual-profile-editor
       - run: pytest
-        working-directory: construct-dcat-docker
+        working-directory: visual-profile-editor
       - uses: docker/setup-buildx-action@v3
       - run: docker compose build
-        working-directory: construct-dcat-docker
+        working-directory: visual-profile-editor

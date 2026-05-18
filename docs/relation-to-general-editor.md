@@ -2,7 +2,7 @@
 
 `General-Ontology-Editor` is the reusable editor foundation. It provides generic visual editing for LinkML/RDF/SHACL-style semantic schemas and lightweight ontologies.
 
-`ConstructDCAT-with-LinkML` is a specialized downstream application. It uses the generic editor foundation but configures it for Construct-DCAT application profile engineering.
+`Visual Profile Editor` is a specialized downstream application. It uses the generic editor foundation but configures it for Construct-DCAT application profile engineering.
 
 The specialized repository adds:
 

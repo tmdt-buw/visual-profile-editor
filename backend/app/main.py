@@ -27,7 +27,7 @@ app = create_app(
     schema_path=PROFILE_SCHEMA_PATH,
     json_schema_path=PROFILE_JSON_SCHEMA_PATH,
     frontend_dist=BASE_DIR / 'frontend-dist',
-    product_title='Construct-DCAT Profile Editor',
+    product_title='Visual Profile Editor',
     mode='profile',
     import_defaults={
         'id': 'https://w3id.org/construct-dcat/imported-profile',

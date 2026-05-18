@@ -2,7 +2,7 @@ services:
   app:
     build:
       context: ..
-      dockerfile: construct-dcat-docker/backend/Dockerfile
+      dockerfile: visual-profile-editor/backend/Dockerfile
     ports:
       - "8000:8000"
     volumes:
@@ -17,7 +17,7 @@ services:
   generator:
     build:
       context: ..
-      dockerfile: construct-dcat-docker/backend/Dockerfile
+      dockerfile: visual-profile-editor/backend/Dockerfile
     volumes:
       - ./schemas:/app/schemas
       - ./generated:/app/generated

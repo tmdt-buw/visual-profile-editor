@@ -218,7 +218,7 @@ function isBundledRuntime() {
     window.location.protocol === 'file:' ||
     window.location.protocol === 'goe:' ||
     window.location.hostname === 'general-ontology-editor.local' ||
-    window.location.hostname === 'construct-dcat-profile-editor.local'
+    window.location.hostname === 'visual-profile-editor.local'
   );
 }
 

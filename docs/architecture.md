@@ -1,4 +1,4 @@
-# Construct-DCAT Profile Editor Architecture
+# Visual Profile Editor Architecture
 
 This application is a downstream profile editor. The reusable backend functions for LinkML loading, RDF import, SHACL export, RDF export, JSON Schema generation, and generic FastAPI app creation come from `General-Ontology-Editor`.
 
@@ -12,5 +12,5 @@ Construct-DCAT-specific code stays in this repository:
 The dependency direction is always:
 
 ```text
-ConstructDCAT-with-LinkML -> General-Ontology-Editor
+Visual Profile Editor -> General-Ontology-Editor
 ```
