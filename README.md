@@ -2,7 +2,7 @@
 
 A visual semantic application profile editor for extending DCAT/DCAT-AP with construction-domain metadata constraints using LinkML, SHACL, JSON Schema, and RDF.
 
-## Main Demonstration
+## Introduction
 
 ![Construct-DCAT visual profile editor showing DCAT/DCAT-AP base classes with selected construction-domain dataset extensions](docs/assets/construct-dcat-profile-editor-demo.png)
 
