@@ -2,6 +2,12 @@
 
 A visual semantic application profile editor for extending DCAT/DCAT-AP with construction-domain metadata constraints using LinkML, SHACL, JSON Schema, and RDF.
 
+## Main Demonstration
+
+![Construct-DCAT visual profile editor showing DCAT/DCAT-AP base classes with selected construction-domain dataset extensions](docs/assets/construct-dcat-profile-editor-demo.png)
+
+The editor supports reuse-first profile engineering: users start from DCAT/DCAT-AP classes, add Construct-DCAT constraints, inspect semantic anchors and dataset extensions such as AAS and BIM datasets, and export profile artifacts from the same visual model.
+
 This repository is a specialized profile-editor application built from the generic [`General-Ontology-Editor`](https://github.com/jundahuang9123/General-Ontology-Editor). The general editor provides the reusable visual schema/ontology editing foundation, while this repository specializes the workflow for Construct-DCAT and construction-domain dataset discovery.
 
 The tool is designed for metadata interoperability workflows where users need to reuse, constrain, and extend existing vocabularies such as DCAT, DCAT-AP, DCTERMS, SKOS, PROV, AAS, IFC/BOT, and construction-domain vocabularies.

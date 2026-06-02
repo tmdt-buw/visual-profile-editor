@@ -387,15 +387,13 @@ function turtleLiteral(value: string) {
 
 export function schemaToFlow(schema: SchemaModel, positions: Record<string, { x: number; y: number }>) {
   const classNames = Object.keys(schema.classes);
-  const nodes: Node[] = classNames.map((className, index) => ({
+  const fallbackPositions = defaultFlowPositions(schema, classNames);
+  const nodes: Node[] = classNames.map((className) => ({
     id: className,
     type: 'classNode',
     draggable: true,
     selectable: true,
-    position: positions[className] ?? {
-      x: 80 + (index % 3) * 320,
-      y: 80 + Math.floor(index / 3) * 260,
-    },
+    position: positions[className] ?? fallbackPositions[className],
     data: {
       label: className,
       classDef: schema.classes[className],
@@ -435,4 +433,50 @@ export function schemaToFlow(schema: SchemaModel, positions: Record<string, { x:
   });
 
   return { nodes, edges };
+}
+
+function defaultFlowPositions(schema: SchemaModel, classNames: string[]) {
+  const positions: Record<string, { x: number; y: number }> = {};
+  const columns = 3;
+  const startX = 80;
+  const startY = 80;
+  const columnGap = 72;
+  const rowGap = 96;
+  let y = startY;
+
+  for (let rowStart = 0; rowStart < classNames.length; rowStart += columns) {
+    const rowClassNames = classNames.slice(rowStart, rowStart + columns);
+    const rowHeight = Math.max(...rowClassNames.map((className) => estimatedNodeHeight(schema.classes[className])));
+    let x = startX;
+
+    rowClassNames.forEach((className) => {
+      positions[className] = {
+        x,
+        y,
+      };
+      x += estimatedNodeWidth(className, schema.classes[className], schema) + columnGap;
+    });
+
+    y += rowHeight + rowGap;
+  }
+
+  return positions;
+}
+
+function estimatedNodeHeight(classDef: SchemaClass | undefined) {
+  const slotCount = classDef?.slots?.length ?? 0;
+  return Math.max(120, 72 + slotCount * 42);
+}
+
+function estimatedNodeWidth(className: string, classDef: SchemaClass | undefined, schema: SchemaModel) {
+  const titleWidth = 96 + className.length * 8 + (classDef?.annotations?.requirement_level ? 110 : 70);
+  const slotWidth = Math.max(
+    0,
+    ...(classDef?.slots ?? []).map((slotName) => {
+      const range = schema.slots[slotName]?.range ?? 'string';
+      return 64 + slotName.length * 8 + range.length * 7 + 170;
+    }),
+  );
+
+  return Math.min(580, Math.max(320, titleWidth, slotWidth));
 }
