@@ -1,0 +1,126 @@
+id: https://w3id.org/construct-dcat/profile/minimal
+name: construct_dcat_minimal_profile
+title: Minimal Construct-DCAT Profile
+description: Minimal DCAT v3 extension for semantic anchoring of construction datasets.
+prefixes:
+  linkml: https://w3id.org/linkml/
+  dcat: http://www.w3.org/ns/dcat#
+  cx: https://w3id.org/cx#
+  owl: http://www.w3.org/2002/07/owl#
+  aas: https://admin-shell.io/aas/3/0/
+  skos: http://www.w3.org/2004/02/skos/core#
+  xsd: http://www.w3.org/2001/XMLSchema#
+imports:
+  - linkml:types
+default_prefix: cx
+default_range: string
+annotations:
+  base_profiles:
+    value: dcat
+  emit_profile_metadata:
+    value: false
+classes:
+  DcatDataset:
+    title: DCAT Dataset
+    class_uri: dcat:Dataset
+    slots:
+      - describesAssetType
+      - usesOntology
+      - hasAASSubmodel
+      - alignsWithConcept
+    annotations:
+      term_kind:
+        value: base
+      source_vocabulary:
+        value: dcat
+      emit_rdf:
+        value: false
+  AASDataset:
+    title: AAS Dataset
+    description: Optional dataset subclass for Asset Administration Shell datasets.
+    is_a: DcatDataset
+    class_uri: cx:AASDataset
+    annotations:
+      term_kind:
+        value: extension
+      requirement_level:
+        value: recommended
+      usage_note:
+        value: Use only when a dcat:Dataset is specifically an Asset Administration Shell dataset.
+  BIMDataset:
+    title: BIM Dataset
+    description: Optional dataset subclass for BIM or IFC datasets.
+    is_a: DcatDataset
+    class_uri: cx:BIMDataset
+    annotations:
+      term_kind:
+        value: extension
+      requirement_level:
+        value: recommended
+      usage_note:
+        value: Use only when a dcat:Dataset is specifically a BIM or IFC dataset.
+slots:
+  describesAssetType:
+    slot_uri: cx:describesAssetType
+    range: owl:Class
+    annotations:
+      term_kind:
+        value: extension
+      requirement_level:
+        value: optional
+      rdf_property_type:
+        value: owl:ObjectProperty
+      rdf_domain:
+        value: dcat:Dataset
+      rdf_range:
+        value: owl:Class
+      usage_note:
+        value: Links a dataset directly to an ontology class for the physical asset or building element it describes.
+  usesOntology:
+    slot_uri: cx:usesOntology
+    range: owl:Ontology
+    annotations:
+      term_kind:
+        value: extension
+      requirement_level:
+        value: optional
+      rdf_property_type:
+        value: owl:ObjectProperty
+      rdf_domain:
+        value: dcat:Dataset
+      rdf_range:
+        value: owl:Ontology
+      usage_note:
+        value: Links a dataset directly to an ontology or vocabulary it commits to.
+  hasAASSubmodel:
+    slot_uri: cx:hasAASSubmodel
+    range: aas:Submodel
+    annotations:
+      term_kind:
+        value: extension
+      requirement_level:
+        value: optional
+      rdf_property_type:
+        value: owl:ObjectProperty
+      rdf_domain:
+        value: dcat:Dataset
+      rdf_range:
+        value: aas:Submodel
+      usage_note:
+        value: Links a dataset directly to a relevant Asset Administration Shell submodel.
+  alignsWithConcept:
+    slot_uri: cx:alignsWithConcept
+    range: skos:Concept
+    annotations:
+      term_kind:
+        value: extension
+      requirement_level:
+        value: optional
+      rdf_property_type:
+        value: owl:ObjectProperty
+      rdf_domain:
+        value: dcat:Dataset
+      rdf_range:
+        value: skos:Concept
+      usage_note:
+        value: Links a dataset directly to a SKOS concept used for classification.

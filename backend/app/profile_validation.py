@@ -54,7 +54,7 @@ def validate_profile(schema: dict[str, Any]) -> dict[str, Any]:
         check_curie(slot_uri, prefixes, errors, f'slots.{slot_name}.slot_uri')
         check_curie(profile_of, prefixes, errors, f'slots.{slot_name}.annotations.profile_of')
 
-        if slot_range not in PRIMITIVE_RANGES and slot_range not in classes and slot_range not in enums:
+        if slot_range not in PRIMITIVE_RANGES and slot_range not in classes and slot_range not in enums and not is_declared_curie(slot_range, prefixes):
             errors.append(issue('error', 'UNDEFINED_RANGE', f'{slot_name} has undefined range {slot_range}.', f'slots.{slot_name}.range'))
 
         if requirement_level(slot_def) == 'mandatory' and not slot_def.get('required') and annotation_value(slot_def, 'min_count') in (None, '', '0'):
@@ -90,6 +90,13 @@ def check_curie(value: Any, prefixes: dict[str, Any], errors: list[dict[str, str
     prefix = value.split(':', 1)[0]
     if prefix not in prefixes:
         errors.append(issue('error', 'UNKNOWN_PREFIX', f'Prefix {prefix} is used but not declared.', path, f'Add {prefix} to profile prefixes.'))
+
+
+def is_declared_curie(value: Any, prefixes: dict[str, Any]) -> bool:
+    if not isinstance(value, str) or ':' not in value or value.startswith(('http://', 'https://')):
+        return False
+    prefix = value.split(':', 1)[0]
+    return prefix in prefixes
 
 
 def extension_documentation_checks(

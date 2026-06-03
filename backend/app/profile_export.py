@@ -29,6 +29,11 @@ TEMPLATES = [
         'title': 'Construct-DCAT Starter Profile',
         'description': 'Start with DCAT/DCAT-AP plus construction-domain semantic anchors.',
     },
+    {
+        'id': 'construct-dcat-minimal-profile',
+        'title': 'Minimal Construct-DCAT Profile',
+        'description': 'Start with the minimal DCAT v3 semantic-anchor extension.',
+    },
 ]
 
 

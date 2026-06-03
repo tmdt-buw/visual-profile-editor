@@ -1,0 +1,29 @@
+@prefix aas: <https://admin-shell.io/aas/3/0/> .
+@prefix cx: <https://w3id.org/cx#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+cx:AASDataset a owl:Class ;
+    rdfs:subClassOf dcat:Dataset .
+
+cx:BIMDataset a owl:Class ;
+    rdfs:subClassOf dcat:Dataset .
+
+cx:alignsWithConcept a owl:ObjectProperty ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range skos:Concept .
+
+cx:describesAssetType a owl:ObjectProperty ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range owl:Class .
+
+cx:hasAASSubmodel a owl:ObjectProperty ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range aas:Submodel .
+
+cx:usesOntology a owl:ObjectProperty ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range owl:Ontology .
+

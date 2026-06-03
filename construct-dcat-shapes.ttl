@@ -1,0 +1,38 @@
+@prefix cx: <https://w3id.org/cx#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcat:DatasetShape a sh:NodeShape ;
+    sh:property [ sh:maxCount 1 ;
+            sh:path cx:describesAssetType ],
+        [ sh:maxCount 1 ;
+            sh:path cx:hasAASSubmodel ],
+        [ sh:maxCount 1 ;
+            sh:path cx:alignsWithConcept ],
+        [ sh:maxCount 1 ;
+            sh:path cx:usesOntology ] ;
+    sh:targetClass dcat:Dataset .
+
+cx:AASDatasetShape a sh:NodeShape ;
+    sh:property [ sh:maxCount 1 ;
+            sh:path cx:usesOntology ],
+        [ sh:maxCount 1 ;
+            sh:path cx:hasAASSubmodel ],
+        [ sh:maxCount 1 ;
+            sh:path cx:describesAssetType ],
+        [ sh:maxCount 1 ;
+            sh:path cx:alignsWithConcept ] ;
+    sh:targetClass cx:AASDataset .
+
+cx:BIMDatasetShape a sh:NodeShape ;
+    sh:property [ sh:maxCount 1 ;
+            sh:path cx:hasAASSubmodel ],
+        [ sh:maxCount 1 ;
+            sh:path cx:usesOntology ],
+        [ sh:maxCount 1 ;
+            sh:path cx:describesAssetType ],
+        [ sh:maxCount 1 ;
+            sh:path cx:alignsWithConcept ] ;
+    sh:targetClass cx:BIMDataset .
+
