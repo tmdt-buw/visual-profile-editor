@@ -27,29 +27,6 @@ Typical use cases include:
 
 `Visual Profile Editor` depends on the reusable Python backend/core package from `General-Ontology-Editor`. Construct-DCAT-specific templates, validation rules, examples, terminology, frontend workflow, and export packaging live in this repository only.
 
-The default dependency is pinned in `backend/requirements.txt` to a GOE GitHub tag:
-
-```text
-general-ontology-editor @ https://github.com/jundahuang9123/General-Ontology-Editor/archive/refs/tags/v0.1.0.zip
-```
-
-This lets VPE install the GOE backend package with pip without requiring a sibling `../General-Ontology-Editor` checkout.
-
-For ordinary VPE development:
-
-```bash
-python -m pip install -r backend/requirements.txt
-```
-
-If you are actively changing the GOE Python core and want VPE to use your local checkout temporarily:
-
-```bash
-python -m pip install -r backend/requirements.txt
-python -m pip install -e ../General-Ontology-Editor
-```
-
-When GOE changes, create a new GOE tag and update this dependency line. VPE will not update automatically.
-
 ## Start The App
 
 ```bash
@@ -119,6 +96,25 @@ Service endpoints are proxied through the main app under:
 - `POST /api/requirements/generate-shacl`
 
 The service itself remains independently deployable on port `8010`.
+
+## Developer Dependency Note
+
+For normal VPE setup, install the backend requirements:
+
+```bash
+python -m pip install -r backend/requirements.txt
+```
+
+That file already pins the GOE backend package to a GitHub tag, so a sibling `../General-Ontology-Editor` checkout is not required.
+
+If you are actively changing the GOE Python core and want VPE to use your local checkout temporarily:
+
+```bash
+python -m pip install -r backend/requirements.txt
+python -m pip install -e ../General-Ontology-Editor
+```
+
+When GOE changes should become the default for VPE, create a new GOE tag and update the pinned dependency in `backend/requirements.txt`.
 
 ## License
 
